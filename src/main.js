@@ -7,8 +7,15 @@ const ccLogo = document.querySelector(".cc-logo span:nth-child(2) img");
 
 function setCardType(type){
     const colors={
-        visa:["#436D99", "#2D57F2"],
+        americanexpress:["#696969","#B6B6B6"],
+        discover:["#8EB5FF","#C732FB"],
+        diners:["#F9E84F","#FF560E"],
         mastercard:["#DF6F29", "#C69347"],
+        jcb15:["#1238FF","#2DD348"],
+        jcb:["#1238FF","#2DD348"],
+        maestro:["#0025CE","#FF1733"],
+        visa:["#436D99", "#2D57F2"],
+        unionpay:["#7149E1", "#E149CF"],
         default:["black", "gray"]
     }
     ccBgColor1.setAttribute("fill", colors[type][0]);
@@ -57,7 +64,7 @@ const cardNumberPattern={
         {
             mask: '0000 000000 00000',
             regex: /^3[47]\d{0,13}/,
-            cardtype: 'american express'
+            cardtype: 'americanexpress'
         },
         {
             mask: '0000 0000 0000 0000',
@@ -143,6 +150,7 @@ function updateSecurityCode(code){
 
 cardNumberMasked.on("accept", ()=>{
     const cardType = cardNumberMasked.masked.currentMask.cardType;
+    console.log(cardType);
     setCardType(cardType);
     updateCardNumber(cardNumberMasked.value);
     
